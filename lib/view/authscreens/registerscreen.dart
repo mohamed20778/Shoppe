@@ -3,6 +3,7 @@ import 'package:shoppe/components/Button.dart';
 import 'package:shoppe/components/custom_form_field.dart';
 import 'package:shoppe/constants.dart';
 import 'package:shoppe/view/authscreens/loginscreen.dart';
+import 'package:shoppe/view/onboarding.dart';
 
 class Registerscreen extends StatefulWidget {
   const Registerscreen({super.key});
@@ -24,7 +25,7 @@ class _RegisterscreenState extends State<Registerscreen> {
           children: [
             Image.asset(
               "assets/images/Bubbles.png",
-              scale: 0.5,
+              scale:MediaQuery.of(context).size.aspectRatio*0.001,
             ),
             Positioned(
               top: MediaQuery.of(context).size.height * 0.14,
@@ -103,7 +104,7 @@ class _RegisterscreenState extends State<Registerscreen> {
           height: 61,
           textcolor: Colors.white,
           buttonfunction: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => HelloScreen()));
           },
         ),
         SizedBox(
@@ -119,6 +120,9 @@ class _RegisterscreenState extends State<Registerscreen> {
             style: TextStyle(
                 color: Colors.black, fontFamily: 'NunitoSans', fontSize: 18),
           ),
+        ),
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.03,
         ),
       ]),
     ));

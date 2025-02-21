@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shoppe/components/Button.dart';
 import 'package:shoppe/constants.dart';
+import 'package:shoppe/view/authscreens/loginscreen.dart';
+import 'package:shoppe/view/authscreens/registerscreen.dart';
 
 class Startscreen extends StatelessWidget {
   const Startscreen({super.key});
@@ -45,7 +47,7 @@ class Startscreen extends StatelessWidget {
           width: 335,
           height: 61,
           textcolor: Colors.white, buttonfunction: () { 
-  Navigator.popAndPushNamed(context, 'registerScreen');
+  Navigator.push(context, MaterialPageRoute(builder: (context)=>Registerscreen()));
            },
           
         ),
@@ -57,7 +59,7 @@ class Startscreen extends StatelessWidget {
           children: [
             Text(
               'Already have an account ',
-              style: TextStyle(color: Color(0xff202020), fontSize: 15),
+              style: TextStyle(color: Color(0xff202020), fontSize: 15,fontFamily: 'NunitoSans'),
             ),
             SizedBox(
               width: MediaQuery.of(context).size.height * 0.009,
@@ -69,7 +71,7 @@ class Startscreen extends StatelessWidget {
                     color: blucolor, borderRadius: BorderRadius.circular(50)),
                 child: IconButton(
                   onPressed: () {
-                    Navigator.popAndPushNamed(context, 'loginScreen');
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
                   },
                   icon: Icon(
                     Icons.arrow_forward,
