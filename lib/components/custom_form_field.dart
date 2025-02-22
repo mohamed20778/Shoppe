@@ -2,18 +2,24 @@ import 'package:flutter/material.dart';
 
 class CustomFormField extends StatelessWidget {
   String hintText;
+  double? height;
+  double? width;
   bool obscureText;
   IconButton? suffixIcon;
   CustomFormField(
       {super.key,
       required this.hintText,
       this.suffixIcon,
-      required this.obscureText});
+      required this.obscureText,
+      this.height,
+      this.width,
+      
+      });
   @override
   Widget build(BuildContext context) {
     return Container(
-      width:  MediaQuery.of(context).size.width * 0.9,
-      height: MediaQuery.of(context).size.height * 0.05,
+      width:  width==null?MediaQuery.of(context).size.width * 0.8:width,
+      height: height==null?MediaQuery.of(context).size.height * 0.06:height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(55),
         color: Color(0xffF8F8F8),

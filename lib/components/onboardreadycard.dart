@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shoppe/components/Button.dart';
 import 'package:shoppe/constants.dart';
+import 'package:shoppe/view/homepage.dart';
 
 class OnboardReadyCard extends StatelessWidget {
   const OnboardReadyCard({super.key});
@@ -43,7 +44,9 @@ class OnboardReadyCard extends StatelessWidget {
           ),
 
           MyButton(
-              buttonfunction: () {},
+              buttonfunction: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
+              },
               text: "Let's Start",
               color: blucolor,
               width: MediaQuery.of(context).size.width * 0.55,
