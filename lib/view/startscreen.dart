@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shoppe/components/Button.dart';
+import 'package:shoppe/components/custom_button.dart';
 import 'package:shoppe/constants.dart';
 import 'package:shoppe/view/authscreens/loginscreen.dart';
 import 'package:shoppe/view/authscreens/registerscreen.dart';

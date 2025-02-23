@@ -17,17 +17,15 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-    
         colorScheme: ColorScheme.light(),
         useMaterial3: true,
       ),
-      initialRoute:'startScreen',
-     routes:{
-      'startScreen':(context) => Startscreen(),
-      'registerScreen':(context) => Registerscreen(),
-      'loginScreen':(context) => LoginScreen(),
-      
-     } ,
+      initialRoute: 'startScreen',
+      routes: {
+        'startScreen': (context) => Startscreen(),
+        'registerScreen': (context) => Registerscreen(),
+        'loginScreen': (context) => LoginScreen(),
+      },
     );
   }
 }

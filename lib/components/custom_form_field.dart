@@ -18,7 +18,9 @@ class CustomFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      // ignore: prefer_if_null_operators
       width:  width==null?MediaQuery.of(context).size.width * 0.8:width,
+      // ignore: prefer_if_null_operators
       height: height==null?MediaQuery.of(context).size.height * 0.06:height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(55),

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shoppe/constants.dart';
-
 class MyButton extends StatelessWidget {
   String text;
   Color color;

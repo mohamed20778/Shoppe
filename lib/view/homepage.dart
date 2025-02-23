@@ -4,7 +4,7 @@ import 'package:shoppe/constants.dart';
 import 'package:shoppe/view/homepgscreens/shop.dart';
 
 class HomePage extends StatefulWidget {
-   HomePage({super.key});
+    const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
