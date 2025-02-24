@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shoppe/constants.dart';
-import 'package:shoppe/view/homepgscreens/shop.dart';
+import 'package:shoppe/view/homepgscreens/favouritescreen.dart';
+import 'package:shoppe/view/homepgscreens/shopscreen.dart';
 
 class HomePage extends StatefulWidget {
     const HomePage({super.key});
@@ -14,7 +15,7 @@ class _HomePageState extends State<HomePage> {
 
   List<Widget> pages = [
     ShopPage(),
-    Text("Search"),
+    FavouriteScreen(),
     Text("Profile"),
   ];
   int currentIndex = 0;
