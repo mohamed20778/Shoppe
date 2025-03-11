@@ -1,10 +1,12 @@
+
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shoppe/view/authscreens/loginscreen.dart';
 import 'package:shoppe/view/authscreens/registerscreen.dart';
 import 'package:shoppe/view/startscreen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const MyApp(),);
 }
 
 class MyApp extends StatelessWidget {
@@ -13,19 +15,22 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return ScreenUtilInit(
+    designSize:  const Size(375, 812),
+    child: MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.light(),
+        colorScheme: const ColorScheme.light(),
         useMaterial3: true,
       ),
       initialRoute: 'startScreen',
       routes: {
-        'startScreen': (context) => Startscreen(),
-        'registerScreen': (context) => Registerscreen(),
-        'loginScreen': (context) => LoginScreen(),
+        'startScreen': (context) => const Startscreen(),
+        'registerScreen': (context) => const Registerscreen(),
+        'loginScreen': (context) => const LoginScreen(),
       },
-    );
+    ),
+          );
   }
 }

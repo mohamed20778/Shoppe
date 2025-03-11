@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shoppe/responsive_helper/sizer_helper_extension.dart';
 
 class OnboardHelloCard extends StatelessWidget {
   const OnboardHelloCard({super.key});
@@ -11,28 +12,29 @@ class OnboardHelloCard extends StatelessWidget {
         children: [
           Image.asset(
             "assets/images/shopping_person.png",
-          scale: MediaQuery.of(context).size.aspectRatio*0.01,
+         
+          scale:MediaQuery.of(context).size.aspectRatio*0.01,
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.05,
+            height: context.setHeight(46),
           ),
           Text(
             'Hello',
             style: TextStyle(
-                fontSize: 28, fontWeight: FontWeight.bold, fontFamily: 'Raleway'),
+                fontSize: context.setSp(28), fontWeight: FontWeight.bold, fontFamily: 'Raleway'),
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.02,
+            height: context.setHeight(12),
           ),
           Padding(
             padding: EdgeInsets.only(
-                left: MediaQuery.of(context).size.width * 0.118,
-                right: MediaQuery.of(context).size.width * 0.09),
+                left: context.setWidth(41),
+                right: context.setWidth(41),),
             child: Text(
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non consectetur turpis. Morbi eu eleifend lacus.',
                 style: TextStyle(
                   fontFamily: 'NunitoSans',
-                  fontSize: 19,
+                  fontSize: context.setSp( 19),
                   color: Colors.black87,
                 )),
           )

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shoppe/components/custom_button.dart';
 import 'package:shoppe/components/custom_form_field.dart';
 import 'package:shoppe/constants.dart';
+import 'package:shoppe/responsive_helper/sizer_helper_extension.dart';
 import 'package:shoppe/view/onboarding.dart';
 
 class Registerscreen extends StatefulWidget {
@@ -18,112 +20,125 @@ class _RegisterscreenState extends State<Registerscreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SingleChildScrollView(
-      child: Column(children: [
-        Stack(
-          clipBehavior: Clip.none,
+          child: Container(
+                width: context.isLandscape?context.screenWidth*2:context.screenWidth,
+                height: context.isLandscape?context.screenHeight*2:context.screenHeight,
+                decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/02 Create Account (2).png'),
+            fit: BoxFit.cover,
+          ),
+                ),
+                child: Column(
           children: [
-            Image.asset(
-              "assets/images/Bubbles.png",
-              scale:MediaQuery.of(context).size.aspectRatio*0.001,
-            ),
-            Positioned(
-              top: MediaQuery.of(context).size.height * 0.14,
-              left: MediaQuery.of(context).size.height * 0.05,
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Create',
-                      style: TextStyle(
-                          fontSize: 49,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: ralewayfont),
-                    ),
-                    Text(
-                      'Account',
-                      style: TextStyle(
-                          fontSize: 49,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: ralewayfont),
-                    ),
-                  ]),
-            ),
-            Positioned(
-                left: MediaQuery.of(context).size.height * 0.05,
-                top: MediaQuery.of(context).size.height * 0.35,
-                child: InkWell(
-                    splashColor: Colors.white,
-                    hoverColor: Colors.white,
-                    focusColor: Colors.white,
-                    highlightColor: Colors.white,
-                    borderRadius: BorderRadius.circular(50),
-                    onTap: () {},
-                    child: Image.asset("assets/images/camera picker.png"))),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+              Padding(
+                padding:  EdgeInsets.only(left: context.setWidth(30)),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  SizedBox(
+                    height: context.setHeight(122),
+                  ),
+                  Text(
+                    'Create',
+                    style: TextStyle(
+                        fontSize: context.setSp(50),
+                        fontWeight: FontWeight.bold,
+                        fontFamily: ralewayfont),
+                  ),
+                  Text(
+                    'Account',
+                    style: TextStyle(
+                        fontSize: context.setSp(50),
+                        fontWeight: FontWeight.bold,
+                        fontFamily: ralewayfont),
+                  ),
+                  SizedBox(
+                    height: context.setHeight(54),),
+                   InkWell(
+                  splashColor: Colors.white,
+                  hoverColor: Colors.white,
+                  focusColor: Colors.white,
+                  highlightColor: Colors.white,
+                  borderRadius: BorderRadius.circular(50),
+                  onTap: () {},
+                  child: Image.asset("assets/images/camera picker.png")),
+                ]),
+              ),
+             
+              SizedBox(
+                height: context.setHeight(32),
+              ),
+               const CustomFormField(
+                hintText: 'Name',
+                obscureText: false,
+              ),
+              SizedBox(
+                height: context.setHeight(8),
+              ),
+              const CustomFormField(
+                hintText: 'Email',
+                obscureText: false,
+              ),
+              SizedBox(
+                height: context.setHeight(8),
+              ),
+              CustomFormField(
+                hintText: 'Password',
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      isvisible = !isvisible;
+                    });
+                  },
+                  icon: Icon(
+                    isvisible ? Icons.visibility_off : Icons.visibility,
+                    color: Colors.grey,
+                  ),
+                ),
+                obscureText: isvisible,
+              ),
+              SizedBox(
+                height: context.setHeight(52.1),
+              ),
+          
+             
+            ]),
+                Column(
+                children: [
+                MyButton(
+                text: 'Done',
+                color: blucolor,
+                width: context.setButtonWidth(335),
+                height: context.setButtonHeight(61),
+                textcolor: Colors.white,
+                buttonfunction: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const HelloScreen()));
+                },
+              ),
+              SizedBox(
+                height: context.setHeight(24),
+              ),
+              InkWell(
+                borderRadius: BorderRadius.circular(7.r),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  "Cancel",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontFamily: 'NunitoSans',
+                      fontSize: context.setSp(15)),
+                ),
+              ),
+              ]),
           ],
-        ),
-        SizedBox(
-          height: MediaQuery.of(context).size.height * 0.09,
-        ),
-        CustomFormField(
-          hintText: 'Name',
-          obscureText: false,
-        ),
-        SizedBox(
-          height: MediaQuery.of(context).size.height * 0.015,
-        ),
-        CustomFormField(
-          hintText: 'Email',
-          obscureText: false,
-        ),
-        SizedBox(
-          height: MediaQuery.of(context).size.height * 0.015,
-        ),
-        CustomFormField(
-          hintText: 'Password',
-          suffixIcon: IconButton(
-            onPressed: () {
-              setState(() {
-                isvisible = !isvisible;
-              });
-            },
-            icon: Icon(
-              isvisible ? Icons.visibility_off : Icons.visibility,
-              color: Colors.grey,
-            ),
-          ),
-          obscureText: isvisible,
-        ),
-        SizedBox(
-          height: MediaQuery.of(context).size.height * 0.055,
-        ),
-        MyButton(
-          text: 'Done',
-          color: blucolor,
-          width: 335,
-          height: 61,
-          textcolor: Colors.white,
-          buttonfunction: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => HelloScreen()));
-          },
-        ),
-        SizedBox(
-          height: MediaQuery.of(context).size.height * 0.03,
-        ),
-        InkWell(
-          borderRadius: BorderRadius.circular(7),
-          onTap: () {
-           Navigator.pop(context);
-          },
-          child: Text(
-            "Cancel",
-            style: TextStyle(
-                color: Colors.black, fontFamily: 'NunitoSans', fontSize: 18),
-          ),
-        ),
-        SizedBox(
-          height: MediaQuery.of(context).size.height * 0.03,
-        ),
-      ]),
-    ));
+                ),
+              ),
+        ));
   }
 }

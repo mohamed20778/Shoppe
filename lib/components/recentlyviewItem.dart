@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shoppe/responsive_helper/sizer_helper_extension.dart';
 
 class Recentlyviewitem extends StatefulWidget {
   const Recentlyviewitem({super.key});
@@ -10,21 +11,51 @@ class Recentlyviewitem extends StatefulWidget {
 class _RecentlyviewitemState extends State<Recentlyviewitem> {
   @override
   Widget build(BuildContext context) {
-     final double sw = MediaQuery.of(context).size.width;
-    final double sh = MediaQuery.of(context).size.height;
-    // ignore: unused_local_variable
-    final double sar = MediaQuery.of(context).size.aspectRatio;
-    return Material(
+     
+    return LayoutBuilder(builder: (context, BoxConstraints constraints) {
+      if (context.isLandscape ) {
+        return Material(
       borderRadius: BorderRadius.circular(50),
       elevation:2,
-      child: CircleAvatar(
-        radius: 37,
-        backgroundColor: Colors.white60,
+      child: SizedBox(
+        width: context.setWidth(55),
+        height: context.setHeight(55),
         child: CircleAvatar(
-          radius:30,
-          backgroundImage: AssetImage('assets/images/artist-2 1.png'),
+            
+          backgroundColor: Colors.white60,
+          child: SizedBox(
+            width: context.setWidth(90),
+            height: context.setHeight(90),
+            child: const CircleAvatar(
+             
+              backgroundImage: AssetImage('assets/images/artist-2 1.png'),
+              ),
           ),
+        ),
       ),
     );
+    }else{
+      return Material(
+      borderRadius: BorderRadius.circular(50),
+      elevation:2,
+      child: SizedBox(
+        width: context.setWidth(53),
+        height: context.setHeight(53),
+        child: CircleAvatar(
+            
+          backgroundColor: Colors.white60,
+          child: SizedBox(
+            width: context.setWidth(51),
+            height: context.setHeight(51),
+            child: const CircleAvatar(
+             
+              backgroundImage: AssetImage('assets/images/artist-2 1.png'),
+              ),
+          ),
+        ),
+      ),
+      );
+    }
+  });
   }
 }

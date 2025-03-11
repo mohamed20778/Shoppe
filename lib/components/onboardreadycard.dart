@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shoppe/components/custom_button.dart';
 import 'package:shoppe/constants.dart';
+import 'package:shoppe/responsive_helper/sizer_helper_extension.dart';
 import 'package:shoppe/view/homepage.dart';
 
 class OnboardReadyCard extends StatelessWidget {
@@ -17,43 +18,43 @@ class OnboardReadyCard extends StatelessWidget {
            scale: MediaQuery.of(context).size.aspectRatio*0.01,
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.05,
+            height: context.setHeight(46),
           ),
           Text(
             'Ready?',
             style: TextStyle(
-                fontSize: 28, fontWeight: FontWeight.bold, fontFamily: 'Raleway'),
+                fontSize: context.setSp(28), fontWeight: FontWeight.bold, fontFamily: 'Raleway'),
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.02,
+            height: context.setHeight(12),
           ),
           Padding(
             padding: EdgeInsets.only(
-                left: MediaQuery.of(context).size.width * 0.118,
-                right: MediaQuery.of(context).size.width * 0.09),
+                left: context.setWidth(42),
+                right: context.setWidth(42)),
             child: Text(
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 style: TextStyle(
                   fontFamily: 'NunitoSans',
-                  fontSize: 19,
+                  fontSize: context.setSp(19),
                   color: Colors.black87,
                 )),
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.025,
+            height:context.setHeight(30),
           ),
 
           MyButton(
               buttonfunction: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>const HomePage()));
               },
               text: "Let's Start",
               color: blucolor,
-              width: MediaQuery.of(context).size.width * 0.55,
-              height: MediaQuery.of(context).size.height * 0.055,
+              width: context.setButtonWidth(201),
+              height: context.setButtonHeight(50),
               textcolor: Colors.white),
                SizedBox(
-            height: MediaQuery.of(context).size.height * 0.025,
+            height: context.setHeight(30),
           ),
         ],
       ),

@@ -1,52 +1,84 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shoppe/responsive_helper/sizer_helper_extension.dart';
 
 class CustomFormField extends StatelessWidget {
-  String hintText;
-  double? height;
-  double? width;
-  bool obscureText;
-  IconButton? suffixIcon;
-  CustomFormField(
-      {super.key,
-      required this.hintText,
-      this.suffixIcon,
-      required this.obscureText,
-      this.height,
-      this.width,
-      
-      });
+  final String hintText;
+  final TextEditingController? controller;
+  final FormFieldValidator<String>? validator;
+  final TextInputType? keyboardType;
+  final bool obscureText;
+  final Widget? prefixIcon;
+  final Widget? suffixIcon;
+  final ValueChanged<String>? onChanged;
+  final double? width; // Responsive width factor
+  final double? height; // Responsive height factor
+
+  const CustomFormField({
+    super.key,
+  
+    required this.hintText,
+    this.controller,
+    this.validator,
+    this.keyboardType,
+    this.obscureText = false,
+    this.prefixIcon,
+    this.suffixIcon,
+    this.onChanged,
+    this.height,
+    this.width
+  });
+
   @override
   Widget build(BuildContext context) {
+    // Get the screen size
+   
+
     return Container(
-      // ignore: prefer_if_null_operators
-      width:  width==null?MediaQuery.of(context).size.width * 0.8:width,
-      // ignore: prefer_if_null_operators
-      height: height==null?MediaQuery.of(context).size.height * 0.06:height,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(55),
-        color: Color(0xffF8F8F8),
+        borderRadius: BorderRadius.circular(52.r),
+        color:  const Color(0xffF8F8F8),
       ),
-      child: Padding(
-        padding: const EdgeInsets.only(left: 13),
-        child: TextSelectionTheme(
-          data: TextSelectionThemeData(cursorColor: Colors.grey,selectionColor: Colors.grey),
-          child: TextFormField(
-            
-              obscureText: obscureText,
+      // ignore: prefer_if_null_operators
+      width: width == null ? context.setButtonWidth(335) : width,
+     
+      // ignore: prefer_if_null_operators
+      height: height == null ? context.setButtonHeight(52) : height, // Set responsive height
+      child: 
+          TextSelectionTheme(
+            data: const TextSelectionThemeData(
               cursorColor: Colors.grey,
+              selectionColor: Colors.grey,
+            ),
+            child: TextFormField(
+              textAlign: TextAlign.start,
+              textAlignVertical: TextAlignVertical.center,
+              cursorColor: Colors.grey,
+              cursorHeight: context.setHeight(16),
+              controller: controller,
+              validator: validator,
+              keyboardType: keyboardType,
+              obscureText: obscureText,
               decoration: InputDecoration(
                 
-                  suffixIcon: suffixIcon,
-                  hintText: hintText,
-                  hintStyle: TextStyle(color: Colors.grey),
-                  border:
-                      OutlineInputBorder(borderRadius: BorderRadius.circular(55)),
-                  enabledBorder:
-                      UnderlineInputBorder(borderSide: BorderSide.none),
-                  focusedBorder:
-                      OutlineInputBorder(borderSide: BorderSide.none))),
-        ),
-      ),
-    );
+                hintText: hintText,
+                hintStyle: const TextStyle(color: Colors.grey),
+                prefixIcon: prefixIcon,
+                suffixIcon: suffixIcon,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(52.r),
+                ),
+                enabledBorder: const OutlineInputBorder(
+                  borderSide: BorderSide.none
+
+                ),
+                focusedBorder: const OutlineInputBorder(
+                  borderSide: BorderSide.none
+                )
+              ),
+              onChanged: onChanged,
+            ),
+          ));
+     
   }
 }

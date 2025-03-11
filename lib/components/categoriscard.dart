@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shoppe/responsive_helper/sizer_helper_extension.dart';
 
 class Categoriescard extends StatefulWidget {
   const Categoriescard({super.key});
@@ -10,45 +12,64 @@ class Categoriescard extends StatefulWidget {
 class _CategoriescardState extends State<Categoriescard> {
   @override
   Widget build(BuildContext context) {
-    final double sw = MediaQuery.of(context).size.width;
-    final double sh = MediaQuery.of(context).size.height;
-    // ignore: unused_local_variable
-    final double sar = MediaQuery.of(context).size.aspectRatio;
-    return Card(
-      color: Colors.white,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(9)),
-      elevation: 4,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
+    return ConstrainedBox(
+      constraints: BoxConstraints(
+        maxHeight: context.isLandscape?context.setHeight(192)*1.5:context.setHeight(192),
+        maxWidth: context.isLandscape?context.setWidth(165)*1.5:context.setWidth(165)
+      ),
+      child: Card(
+        color: Colors.white,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(9.r)),
+        elevation: 4,
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Image.asset(
-            'assets/images/clothescategory.png',
-            scale: 1.6,
+          Expanded(
+            flex: 3,
+            child: Image.asset(
+              width: double.infinity,
+              'assets/images/clothescategory.png',
+              fit: BoxFit.fill,
+              
+            ),
           ),
           SizedBox(
-            height: sh * 0.007,
+            height: context.setHeight(10),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Clothing',
-                style: TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'raleway'),
-              ),
-              Container(
-                width: sw * 0.1,
-                height: sh * 0.025,
-                decoration: BoxDecoration(
-                  color: Color(0XFFDFE9FF),
-                  borderRadius: BorderRadius.circular(5),
+          Padding(
+            padding: EdgeInsets.only(
+                left: context.setWidth(6), right: context.setWidth(6)),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Clothing',
+                  style: TextStyle(
+                      fontSize: context.setSp(16),
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'raleway'),
                 ),
-                child: 
-                Center(child: Text('235', style: TextStyle(fontFamily: 'raleway',fontWeight: FontWeight.bold,fontSize: 12))))
-            ],
-          )
+                Container(
+                  width: context.setButtonWidth(38),
+                  height: context.setButtonHeight(21),
+                  decoration: BoxDecoration(
+                    color: const Color(0XFFDFE9FF),
+                    borderRadius: BorderRadius.circular(5.r),
+                  ),
+                  child: Center(
+                    child: Text(
+                      '235',
+                      style: TextStyle(
+                        fontFamily: 'raleway',
+                        fontWeight: FontWeight.bold,
+                        fontSize: context.setSp(12),
+                      ),
+                    ),
+                    
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: context.setHeight(5),)
         ]),
       ),
     );

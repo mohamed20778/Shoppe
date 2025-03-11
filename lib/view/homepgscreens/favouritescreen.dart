@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:shoppe/components/customRow.dart';
 import 'package:shoppe/components/favoriteItemCard.dart';
-import 'package:shoppe/components/recentlyviewItem.dart';
-import 'package:shoppe/constants.dart';
+import 'package:shoppe/components/horizontal_list.dart';
+import 'package:shoppe/responsive_helper/sizer_helper_extension.dart';
 
 class FavouriteScreen extends StatefulWidget {
   const FavouriteScreen({super.key});
@@ -13,92 +14,45 @@ class FavouriteScreen extends StatefulWidget {
 class _FavouriteScreenState extends State<FavouriteScreen> {
   @override
   Widget build(BuildContext context) {
-    final double screenwidth = MediaQuery.of(context).size.width;
-    final double screenheight = MediaQuery.of(context).size.height;
-    final double screenaspectratio = MediaQuery.of(context).size.aspectRatio;
+   
     return Scaffold(
         body: Padding(
       padding: EdgeInsets.only(
-          top: screenheight * 0.05,
-          left: screenwidth * 0.05,
-          right: screenwidth * 0.05),
+          top: context.setHeight(48),
+          left: context.setWidth(20),
+          right: context.setWidth(10)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             "WishList",
             style: TextStyle(
-                fontSize: 28,
+                fontSize: context.setSp(28),
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Raleway'),
           ),
           SizedBox(
-            height: screenheight * 0.01,
+            height: context.setHeight(13),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Recently Viewed',
-                style: TextStyle(
-                    color: Color(0xff202020),
-                    fontSize: 21,
-                    fontFamily: 'Raleway',
-                    fontWeight: FontWeight.bold),
-              ),
-              Container(
-                  width: screenwidth * 0.1,
-                  height: screenheight * 0.05,
-                  decoration: BoxDecoration(
-                      color: blucolor, borderRadius: BorderRadius.circular(50)),
-                  child: IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.arrow_forward,
-                      color: Colors.white,
-                      size: 20,
-                    ),
-                  ))
-            ],
-          ),
-          Container(
-            height: screenheight * 0.085,
-            decoration: BoxDecoration(
-              color: Colors.white,
-            ),
-            child: ListView.separated(
-                scrollDirection: Axis.horizontal,
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
-                  return Recentlyviewitem();
-                },
-                separatorBuilder: (context, index) {
-                  return SizedBox(
-                    width: screenwidth * 0.03,
-                  );
-                },
-                itemCount: 60
-                ),
-                
+          CustomRow(
+            rowText: 'Recently Viewed',
+            fontSize: 21,
           ),
           SizedBox(
-            height: screenheight * 0.02
-            
-            
-            
-            
-            
-            ,
+            height: context.setHeight(14),
+          ),
+          const HorizontalList(),
+          SizedBox(
+            height: context.setHeight(14),
           ),
           Expanded(
-            child: ListView.builder
-            (
-              padding: EdgeInsets.only(top: screenheight * 0.01),
-              shrinkWrap: true,
-              itemCount: 10,
-              itemBuilder: (context, index) {
-              return FavouriteItemCard();
-            }),
+            child: ListView.builder(
+               padding: EdgeInsets.only(top: context.setHeight(10)),
+                shrinkWrap: true,
+                itemCount: 10,
+                itemBuilder: (context, index) {
+                  return const FavouriteItemCard();
+                }),
           )
         ],
       ),

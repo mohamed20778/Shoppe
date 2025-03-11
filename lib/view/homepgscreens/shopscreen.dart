@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:shoppe/components/categoriscard.dart';
+import 'package:shoppe/components/categScrollCardsview.dart';
+import 'package:shoppe/components/customRow.dart';
 import 'package:shoppe/components/custom_form_field.dart';
+import 'package:shoppe/components/horizontal_list.dart';
 import 'package:shoppe/constants.dart';
+import 'package:shoppe/responsive_helper/sizer_helper_extension.dart';
 
 class ShopPage extends StatefulWidget {
   const ShopPage({super.key});
@@ -16,119 +19,99 @@ class _ShopPage extends State<ShopPage> {
     'assets/images/shoppingperson2.png',
     'assets/images/shoppingperson2.png',
     'assets/images/shoppingperson2.png',
-    
   ];
   @override
   Widget build(BuildContext context) {
-    final double screenwidth = MediaQuery.of(context).size.width;
-    final double screenheight = MediaQuery.of(context).size.height;
-    final double screenaspectratio = MediaQuery.of(context).size.aspectRatio;
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.only(
-            top: screenheight * 0.05,
-            left: screenwidth * 0.05,
-            right: screenwidth * 0.05),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Text(
-                  'Shop',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 28,
-                      fontFamily: 'Raleway'),
-                ),
-                SizedBox(
-                  width: screenwidth * 0.05,
-                ),
-                CustomFormField(
-                  hintText: 'search',
-                  obscureText: false,
-                  width: screenwidth * 0.67,
-                  height: screenheight * 0.048,
-                  suffixIcon: IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.camera_alt_outlined,
-                      color: blucolor,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.only(
+              top: context.setHeight(54),
+              left: context.setWidth(20),
+              right: context.setWidth(18)),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Text(
+                    'Shop',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: context.setSp(28),
+                        fontFamily: 'Raleway'),
+                  ),
+                  SizedBox(
+                    width: context.setWidth(19),
+                  ),
+                  CustomFormField(
+                    hintText: 'search',
+                    obscureText: false,
+                    width: context.setButtonWidth(240),
+                    height: context.setButtonHeight(36),
+                    suffixIcon: IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.camera_alt_outlined,
+                        color: blucolor,
+                      ),
                     ),
                   ),
+                ],
+              ),
+              SizedBox(
+                height: context.setHeight(19),
+              ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Center(
+                  child: Image.asset(
+                    'assets/images/Big Sale Banner (1).png',
+                    width: context.isLandscape
+                        ? context.screenWidth * 0.5
+                        : context.screenWidth,
+                    height: context.isLandscape
+                        ? context.screenHeight * 0.5
+                        : context.screenHeight * 0.3,
+                    fit: BoxFit.fill,
+                  ),
                 ),
-              ],
-            ),
-            SizedBox(
-              height: screenheight * 0.02,
-            ),
-            Image.asset(
-              'assets/images/Big Sale Banner (1).png',
-              scale: screenaspectratio * 0.02,
-            ),
-            SizedBox(
-              height: screenheight * 0.02,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Categories',
+              ),
+              SizedBox(
+                height: context.setHeight(15),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Categories',
+                    style: TextStyle(
+                        color: const Color(0xff202020),
+                        fontSize: context.setSp(20),
+                        fontFamily: 'raleway',
+                        fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    width: context.setWidth(120),
+                  ),
+                  CustomRow(rowText: 'see all', fontSize: 15,spaceBetween: 7,)
+                ],
+              ),
+          const CategScrollCards(),
+              SizedBox(
+                height: context.setHeight(27),
+              ),
+              const Text('Top Products',
                   style: TextStyle(
-                      color: Color(0xff202020),
+                      fontFamily: 'Raleway',
                       fontSize: 21,
-                      fontFamily: 'raleway',
-                      fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.height * 0.009,
-                ),
-                Row(
-                  children: [
-                    Text(
-                      'See All',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 15,
-                          fontFamily: 'raleway',
-                          fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.height * 0.02,
-                    ),
-                    Container(
-                        width: 35,
-                        height: 35,
-                        decoration: BoxDecoration(
-                            color: blucolor,
-                            borderRadius: BorderRadius.circular(50)),
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.arrow_forward,
-                            color: Colors.white,
-                            size: 17,
-                          ),
-                        )),
-                  ],
-                )
-              ],
-            ),
-            Expanded(
-              child: GridView.builder( 
-                  padding: EdgeInsets.only(top: screenheight * 0.01),
-                scrollDirection: Axis.vertical,
-                  shrinkWrap: true,
-                  itemCount: 8,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      childAspectRatio: 4/4.8,
-                      crossAxisSpacing: screenwidth * 0.02,
-                      crossAxisCount: 2),
-                  itemBuilder: (context, index) {
-                    return Categoriescard();
-                  }),
-            ),
-          
-          ],
+                      fontWeight: FontWeight.bold)),
+              SizedBox(
+                height: context.setHeight(10),
+              ),
+              const HorizontalList(),
+            ],
+          ),
         ),
       ),
     );

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shoppe/components/custom_button.dart';
+import 'package:shoppe/components/reusable_row.dart';
 import 'package:shoppe/constants.dart';
-import 'package:shoppe/view/authscreens/loginscreen.dart';
+import 'package:shoppe/responsive_helper/sizer_helper_extension.dart';
 import 'package:shoppe/view/authscreens/registerscreen.dart';
 
 class Startscreen extends StatelessWidget {
@@ -10,78 +11,56 @@ class Startscreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(children: [
-        SizedBox(
-          height: MediaQuery.of(context).size.height * 0.3,
-        ),
-        Center(
-          child: Stack(
-            children: [
-              Image.asset(
-                "assets/images/Ellipse.png",
-                width: 134,
-                height: 134,
-              ),
-              Positioned(
-                top: 20,
-                left: 26,
-                child: Image.asset(
-                  "assets/images/bag.png",
-                  width: 81,
-                  height: 81,
-                ),
-              ),
-            ],
+      body: SingleChildScrollView(
+        child: Column(children: [
+          SizedBox(
+            height: context.setHeight(232),
           ),
-        ),
-        Text(
-          "Shoppe",
-          style: TextStyle(fontSize: 52, fontWeight: FontWeight.bold),
-        ),
-        SizedBox(
-          height: MediaQuery.of(context).size.height * 0.22,
-        ),
-        MyButton(
-          text: "Let's get started",
-          color: blucolor,
-          width: 335,
-          height: 61,
-          textcolor: Colors.white, buttonfunction: () { 
-  Navigator.push(context, MaterialPageRoute(builder: (context)=>Registerscreen()));
-           },
-          
-        ),
-        SizedBox(
-          height: MediaQuery.of(context).size.height * 0.03,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Already have an account ',
-              style: TextStyle(color: Color(0xff202020), fontSize: 15,fontFamily: 'NunitoSans'),
-            ),
-            SizedBox(
-              width: MediaQuery.of(context).size.height * 0.009,
-            ),
-            Container(
-                width: 40,
-                height: 40,
-                decoration: BoxDecoration(
-                    color: blucolor, borderRadius: BorderRadius.circular(50)),
-                child: IconButton(
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
-                  },
-                  icon: Icon(
-                    Icons.arrow_forward,
-                    color: Colors.white,
-                    size: 20,
+          Center(
+            child: Stack(
+              children: [
+                Image.asset(
+                  "assets/images/Ellipse.png",
+                  width: 134,
+                  height: 134,
+                ),
+                Positioned(
+                  top: 20,
+                  left: 26,
+                  child: Image.asset(
+                    "assets/images/bag.png",
+                    width: 81,
+                    height: 81,
                   ),
-                ))
-          ],
-        )
-      ]),
+                ),
+              ],
+            ),
+          ),
+          Text(
+            "Shoppe",
+            style: TextStyle(
+                fontSize: context.setSp(50), fontWeight: FontWeight.bold),
+          ),
+          SizedBox(
+            height: context.setHeight(185),
+          ),
+          MyButton(
+            text: "Let's get started",
+            color: blucolor,
+            width: context.setButtonWidth(335),
+            height:context.setButtonHeight(61),
+            textcolor: Colors.white,
+            buttonfunction: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Registerscreen()));
+            },
+          ),
+          SizedBox(
+            height: context.setHeight(24),
+          ),
+          const ReusableRow(),
+        ]),
+      ),
     );
   }
 }

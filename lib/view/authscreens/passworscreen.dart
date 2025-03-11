@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pinput/pinput.dart';
 import 'package:shoppe/components/custom_form_field.dart';
 import 'package:shoppe/constants.dart';
+import 'package:shoppe/responsive_helper/sizer_helper_extension.dart';
 import 'package:shoppe/view/authscreens/loginscreen.dart';
 
 class PasswordScreen extends StatefulWidget {
@@ -18,117 +18,111 @@ class _PasswordScreenState extends State<PasswordScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Stack(
-              children: [
-                Image.asset(
-                  'assets/images/PasswordBubbles.png',
-                  scale: MediaQuery.of(context).size.aspectRatio * 0.01,
-                ),
-                Positioned(
-                  top: MediaQuery.of(context).size.height * 0.20,
-                  left: MediaQuery.of(context).size.width * 0.4,
+        child: Container(
+          width: context.isLandscape?context.screenWidth*2:context.screenWidth,
+          height: context.isLandscape?context.screenHeight*2:context.screenHeight,
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+            image: AssetImage('assets/images/PasswordBackGround.png'),
+            fit: BoxFit.cover,
+          )),
+          child: Column(
+            children: [
+            SizedBox(height: context.setHeight(156),),
+              CircleAvatar(
+                radius:  context.setWidth(47),
+                backgroundColor: Colors.grey,
+                child: CircleAvatar(
+                  backgroundColor: Colors.white,
+                  radius: context.setWidth(46.5),
                   child: CircleAvatar(
-                    radius: MediaQuery.of(context).size.width * 0.121,
-                    backgroundColor: Colors.grey,
-                    child: CircleAvatar(
-                      backgroundColor: Colors.white,
-                      radius: MediaQuery.of(context).size.width * 0.12,
-                      child: CircleAvatar(
-                        backgroundImage:
-                            AssetImage('assets/images/artist-2 1.png'),
-                        radius: MediaQuery.of(context).size.width * 0.105,
-                      ),
-                    ),
+                    backgroundImage:
+                        const AssetImage('assets/images/artist-2 1.png'),
+                    radius: context.setWidth(40),
                   ),
                 ),
-                Positioned(
-                    top: MediaQuery.of(context).size.height * 0.35,
-                    left: MediaQuery.of(context).size.width * 0.26,
-                    child: Text(
-                      'Hello, Romina!!',
-                      style: TextStyle(
-                          fontSize: 28,
-                          fontFamily: 'Raleway',
-                          fontWeight: FontWeight.bold),
-                    )),
-                Positioned(
-                    top: MediaQuery.of(context).size.height * 0.425,
-                    left: MediaQuery.of(context).size.width * 0.3,
-                    child: Text(
-                      'Type your password',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontFamily: 'NunitoSans',
-                      ),
-                    )),
-              ],
-            ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-            CustomFormField(
-              hintText: 'Password',
-              obscureText: isvisible,
-              suffixIcon: IconButton(
-                onPressed: () {
-                  setState(() {
-                    isvisible = !isvisible;
-                  });
-                },
-                icon: Icon(
-                  isvisible ? Icons.visibility_off : Icons.visibility,
-                  color: Colors.grey,
-                ),
               ),
-            ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-            InkWell(
-              splashColor: Colors.white,
-                      hoverColor: Colors.white,
-                      focusColor: Colors.white,
-                      highlightColor: Colors.white,
-              onTap: () {
-                
-              },
-              child: Text(
-                'Forgot your Password?',style: TextStyle(
-                  fontSize: 15,
+              SizedBox(height:context.setHeight(35)),
+              Text(
+                'Hello, Romina!!',
+                style: TextStyle(
+                    fontSize:context.setSp(28) ,
+                    fontFamily: 'Raleway',
+                    fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: context.setHeight(30),),
+              Text(
+                'Type your password',
+                style: TextStyle(
+                  fontSize: context.setSp(18),
                   fontFamily: 'NunitoSans',
                 ),
               ),
-            ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.3),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Not you?',
-                  style: TextStyle(color: Color(0xff202020), fontSize: 15),
+              SizedBox(height:context.setHeight(23)),
+              CustomFormField(
+                hintText: 'Password',
+                obscureText: isvisible,
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      isvisible = !isvisible;
+                    });
+                  },
+                  icon: Icon(
+                    isvisible ? Icons.visibility_off : Icons.visibility,
+                    color: Colors.grey,
+                  ),
                 ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.height * 0.009,
+              ),
+              SizedBox(height: context.setHeight(30)),
+              InkWell(
+                splashColor: Colors.white,
+                        hoverColor: Colors.white,
+                        focusColor: Colors.white,
+                        highlightColor: Colors.white,
+                onTap: () {
+                  
+                },
+                child: Text(
+                  'Forgot your Password?',style: TextStyle(
+                    fontSize: context.setSp(15),
+                    fontFamily: 'NunitoSans',
+                  ),
                 ),
-                Container(
-                    width: 30,
-                    height: 30,
-                    decoration: BoxDecoration(
-                        color: blucolor, borderRadius: BorderRadius.circular(50)),
-                    child: IconButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => LoginScreen()));
-                      },
-                      icon: Icon(
-                        Icons.arrow_forward,
-                        color: Colors.white,
-                        size: 15,
-                      ),
-                    ))
-              ],
-            )
-          ],
+              ),
+              SizedBox(height:context.setHeight(250)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Not you?',
+                    style: TextStyle(color: Color(0xff202020), fontSize: 15),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.height * 0.009,
+                  ),
+                  Container(
+                      width: 30,
+                      height: 30,
+                      decoration: BoxDecoration(
+                          color: blucolor, borderRadius: BorderRadius.circular(50)),
+                      child: IconButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const LoginScreen()));
+                        },
+                        icon: const Icon(
+                          Icons.arrow_forward,
+                          color: Colors.white,
+                          size: 15,
+                        ),
+                      ))
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
