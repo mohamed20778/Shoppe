@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:shoppe/components/custom_button.dart';
-import 'package:shoppe/components/reusable_row.dart';
-import 'package:shoppe/constants.dart';
-import 'package:shoppe/responsive_helper/sizer_helper_extension.dart';
-import 'package:shoppe/view/authscreens/registerscreen.dart';
+import 'package:shoppe/core/theme/app_color.dart';
+import 'package:shoppe/widgets/custom_button.dart';
+import 'package:shoppe/widgets/reusable_row.dart';
+import 'package:shoppe/core/utils/constants.dart';
+import 'package:shoppe/core/theme/app_style.dart';
+import 'package:shoppe/core/utils/responsive_helper/sizer_helper_extension.dart';
+import 'package:shoppe/view/auth/registerscreen.dart';
 
 class Startscreen extends StatelessWidget {
   const Startscreen({super.key});
@@ -36,23 +38,21 @@ class Startscreen extends StatelessWidget {
               ],
             ),
           ),
-          Text(
-            "Shoppe",
-            style: TextStyle(
-                fontSize: context.setSp(50), fontWeight: FontWeight.bold),
-          ),
+          Text("Shoppe", style: AppStyle.headlinestyle1(context)),
           SizedBox(
             height: context.setHeight(185),
           ),
           MyButton(
             text: "Let's get started",
-            color: blucolor,
+            color: AppColor.blueColor,
             width: context.setButtonWidth(335),
-            height:context.setButtonHeight(61),
+            height: context.setButtonHeight(61),
             textcolor: Colors.white,
             buttonfunction: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const Registerscreen()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const Registerscreen()));
             },
           ),
           SizedBox(
