@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shoppe/components/categScrollCardsview.dart';
-import 'package:shoppe/components/customRow.dart';
-import 'package:shoppe/components/custom_form_field.dart';
-import 'package:shoppe/components/horizontal_list.dart';
+import 'package:shoppe/widgets/categScrollCardsview.dart';
+import 'package:shoppe/widgets/customRow.dart';
+import 'package:shoppe/widgets/custom_form_field.dart';
+import 'package:shoppe/widgets/horizontal_list.dart';
 import 'package:shoppe/constants.dart';
 import 'package:shoppe/responsive_helper/sizer_helper_extension.dart';
 
@@ -94,10 +94,14 @@ class _ShopPage extends State<ShopPage> {
                   SizedBox(
                     width: context.setWidth(120),
                   ),
-                  CustomRow(rowText: 'see all', fontSize: 15,spaceBetween: 7,)
+                  CustomRow(
+                    rowText: 'see all',
+                    fontSize: 15,
+                    spaceBetween: 7,
+                  )
                 ],
               ),
-          const CategScrollCards(),
+              const CategScrollCards(),
               SizedBox(
                 height: context.setHeight(27),
               ),

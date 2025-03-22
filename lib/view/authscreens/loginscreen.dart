@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shoppe/components/custom_button.dart';
-import 'package:shoppe/components/custom_form_field.dart';
+import 'package:shoppe/widgets/custom_button.dart';
+import 'package:shoppe/widgets/custom_form_field.dart';
 import 'package:shoppe/constants.dart';
 import 'package:shoppe/responsive_helper/sizer_helper_extension.dart';
 import 'package:shoppe/view/authscreens/passworscreen.dart';
@@ -14,9 +14,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class LoginScreenState extends State<LoginScreen> {
-  final _formKey=GlobalKey<FormState>();
-  TextEditingController emailController=TextEditingController();
-  
+  final _formKey = GlobalKey<FormState>();
+  TextEditingController emailController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,9 +27,11 @@ class LoginScreenState extends State<LoginScreen> {
           height: context.screenHeight,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: const AssetImage('assets/images/Bubbles (2).png'),
-              fit: BoxFit.cover,
-              scale: context.isLandscape?context.setHeight(0.5):context.setWidth(0.5)),
+                image: const AssetImage('assets/images/Bubbles (2).png'),
+                fit: BoxFit.cover,
+                scale: context.isLandscape
+                    ? context.setHeight(0.5)
+                    : context.setWidth(0.5)),
           ),
           child: SingleChildScrollView(
             child: Column(
@@ -58,7 +60,11 @@ class LoginScreenState extends State<LoginScreen> {
                     SizedBox(
                       height: context.setHeight(17),
                     ),
-                    CustomFormField(controller: emailController,hintText: 'Email', obscureText: false,),
+                    CustomFormField(
+                      controller: emailController,
+                      hintText: 'Email',
+                      obscureText: false,
+                    ),
                     SizedBox(
                       height: context.setHeight(36.7),
                     ),
@@ -72,7 +78,8 @@ class LoginScreenState extends State<LoginScreen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const PasswordScreen()));
+                                  builder: (context) =>
+                                      const PasswordScreen()));
                         },
                         text: 'Next',
                         color: blucolor,

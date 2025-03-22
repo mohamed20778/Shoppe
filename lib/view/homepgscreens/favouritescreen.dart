@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shoppe/components/customRow.dart';
-import 'package:shoppe/components/favoriteItemCard.dart';
-import 'package:shoppe/components/horizontal_list.dart';
+import 'package:shoppe/widgets/customRow.dart';
+import 'package:shoppe/widgets/favoriteItemCard.dart';
+import 'package:shoppe/widgets/horizontal_list.dart';
 import 'package:shoppe/responsive_helper/sizer_helper_extension.dart';
 
 class FavouriteScreen extends StatefulWidget {
@@ -14,7 +14,6 @@ class FavouriteScreen extends StatefulWidget {
 class _FavouriteScreenState extends State<FavouriteScreen> {
   @override
   Widget build(BuildContext context) {
-   
     return Scaffold(
         body: Padding(
       padding: EdgeInsets.only(
@@ -47,7 +46,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
           ),
           Expanded(
             child: ListView.builder(
-               padding: EdgeInsets.only(top: context.setHeight(10)),
+                padding: EdgeInsets.only(top: context.setHeight(10)),
                 shrinkWrap: true,
                 itemCount: 10,
                 itemBuilder: (context, index) {

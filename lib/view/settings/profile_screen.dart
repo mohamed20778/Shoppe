@@ -8,7 +8,6 @@ import 'package:shoppe/widgets/custom_button.dart';
 
 import 'package:shoppe/widgets/horizontal_list.dart';
 import 'package:shoppe/widgets/profile_appbar.dart';
-import 'package:shoppe/widgets/reusable_row.dart';
 import 'package:shoppe/core/utils/constants.dart';
 
 class ProfileScreen extends StatefulWidget {

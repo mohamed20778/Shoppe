@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shoppe/components/custom_form_field.dart';
+import 'package:shoppe/widgets/custom_form_field.dart';
 import 'package:shoppe/constants.dart';
 import 'package:shoppe/responsive_helper/sizer_helper_extension.dart';
 import 'package:shoppe/view/authscreens/loginscreen.dart';
@@ -12,15 +12,19 @@ class PasswordScreen extends StatefulWidget {
 }
 
 class _PasswordScreenState extends State<PasswordScreen> {
-  final controller=PageController();
+  final controller = PageController();
   bool isvisible = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          width: context.isLandscape?context.screenWidth*2:context.screenWidth,
-          height: context.isLandscape?context.screenHeight*2:context.screenHeight,
+          width: context.isLandscape
+              ? context.screenWidth * 2
+              : context.screenWidth,
+          height: context.isLandscape
+              ? context.screenHeight * 2
+              : context.screenHeight,
           decoration: const BoxDecoration(
               image: DecorationImage(
             image: AssetImage('assets/images/PasswordBackGround.png'),
@@ -28,9 +32,11 @@ class _PasswordScreenState extends State<PasswordScreen> {
           )),
           child: Column(
             children: [
-            SizedBox(height: context.setHeight(156),),
+              SizedBox(
+                height: context.setHeight(156),
+              ),
               CircleAvatar(
-                radius:  context.setWidth(47),
+                radius: context.setWidth(47),
                 backgroundColor: Colors.grey,
                 child: CircleAvatar(
                   backgroundColor: Colors.white,
@@ -42,15 +48,17 @@ class _PasswordScreenState extends State<PasswordScreen> {
                   ),
                 ),
               ),
-              SizedBox(height:context.setHeight(35)),
+              SizedBox(height: context.setHeight(35)),
               Text(
                 'Hello, Romina!!',
                 style: TextStyle(
-                    fontSize:context.setSp(28) ,
+                    fontSize: context.setSp(28),
                     fontFamily: 'Raleway',
                     fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: context.setHeight(30),),
+              SizedBox(
+                height: context.setHeight(30),
+              ),
               Text(
                 'Type your password',
                 style: TextStyle(
@@ -58,7 +66,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
                   fontFamily: 'NunitoSans',
                 ),
               ),
-              SizedBox(height:context.setHeight(23)),
+              SizedBox(height: context.setHeight(23)),
               CustomFormField(
                 hintText: 'Password',
                 obscureText: isvisible,
@@ -77,20 +85,19 @@ class _PasswordScreenState extends State<PasswordScreen> {
               SizedBox(height: context.setHeight(30)),
               InkWell(
                 splashColor: Colors.white,
-                        hoverColor: Colors.white,
-                        focusColor: Colors.white,
-                        highlightColor: Colors.white,
-                onTap: () {
-                  
-                },
+                hoverColor: Colors.white,
+                focusColor: Colors.white,
+                highlightColor: Colors.white,
+                onTap: () {},
                 child: Text(
-                  'Forgot your Password?',style: TextStyle(
+                  'Forgot your Password?',
+                  style: TextStyle(
                     fontSize: context.setSp(15),
                     fontFamily: 'NunitoSans',
                   ),
                 ),
               ),
-              SizedBox(height:context.setHeight(250)),
+              SizedBox(height: context.setHeight(250)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -105,7 +112,8 @@ class _PasswordScreenState extends State<PasswordScreen> {
                       width: 30,
                       height: 30,
                       decoration: BoxDecoration(
-                          color: blucolor, borderRadius: BorderRadius.circular(50)),
+                          color: blucolor,
+                          borderRadius: BorderRadius.circular(50)),
                       child: IconButton(
                         onPressed: () {
                           Navigator.push(

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:shoppe/core/theme/app_color.dart';
 import 'package:shoppe/widgets/custom_button.dart';
 import 'package:shoppe/widgets/reusable_row.dart';
-import 'package:shoppe/core/utils/constants.dart';
 import 'package:shoppe/core/theme/app_style.dart';
 import 'package:shoppe/core/utils/responsive_helper/sizer_helper_extension.dart';
 import 'package:shoppe/view/auth/registerscreen.dart';

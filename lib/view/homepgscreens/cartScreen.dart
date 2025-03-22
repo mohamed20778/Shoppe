@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:shoppe/components/address_Item.dart';
-import 'package:shoppe/components/cart_Item.dart';
-import 'package:shoppe/components/custom_button.dart';
-import 'package:shoppe/components/favoriteItemCard.dart';
+
 import 'package:shoppe/constants.dart';
 import 'package:shoppe/responsive_helper/sizer_helper_extension.dart';
+import 'package:shoppe/widgets/address_Item.dart';
+import 'package:shoppe/widgets/cart_Item.dart';
+import 'package:shoppe/widgets/custom_button.dart';
+import 'package:shoppe/widgets/favoriteItemCard.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
@@ -49,7 +50,8 @@ class _CartScreenState extends State<CartScreen> {
               ),
             ),
             SizedBox(
-              height: context.setHeight(21),),
+              height: context.setHeight(21),
+            ),
             Text(
               'From Your Wishlist',
               style: TextStyle(
@@ -57,34 +59,42 @@ class _CartScreenState extends State<CartScreen> {
                   fontSize: context.setSp(22),
                   fontWeight: FontWeight.bold),
             ),
-             Flexible(
+            Flexible(
               child: CustomScrollView(
                 slivers: [
                   SliverList.builder(
-                      itemBuilder: (context, index) => const FavouriteItemCard(),
+                      itemBuilder: (context, index) =>
+                          const FavouriteItemCard(),
                       itemCount: 2),
-                      
                 ],
               ),
             ),
-            Row(children: [
-              Text(
-                'Total:',
-                style: TextStyle(
-                    fontFamily: 'Raleway',
-                    fontSize: context.setSp(20),
-                    fontWeight: FontWeight.bold),
-              ),
-              Text(
-                ' \$36',
-                style: TextStyle(
-                    fontFamily: 'Raleway',
-                    fontSize: context.setSp(18),
-                    fontWeight: FontWeight.bold),
-              ),
-             const Spacer(),
-              MyButton(buttonfunction: (){}, text: 'Checkout', color: blucolor, width: context.setButtonWidth(128), height: context.setButtonHeight(40), textcolor: Colors.white)
-            ],)
+            Row(
+              children: [
+                Text(
+                  'Total:',
+                  style: TextStyle(
+                      fontFamily: 'Raleway',
+                      fontSize: context.setSp(20),
+                      fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  ' \$36',
+                  style: TextStyle(
+                      fontFamily: 'Raleway',
+                      fontSize: context.setSp(18),
+                      fontWeight: FontWeight.bold),
+                ),
+                const Spacer(),
+                MyButton(
+                    buttonfunction: () {},
+                    text: 'Checkout',
+                    color: blucolor,
+                    width: context.setButtonWidth(128),
+                    height: context.setButtonHeight(40),
+                    textcolor: Colors.white)
+              ],
+            )
           ],
         ),
       ),
