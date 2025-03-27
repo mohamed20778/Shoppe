@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shoppe/core/theme/app_color.dart';
 import 'package:shoppe/core/theme/app_style.dart';
 import 'package:shoppe/cubits/get_categories/get_categories_cubit.dart';
 import 'package:shoppe/models/categorymodel.dart';
@@ -28,7 +29,8 @@ class _CategScrollCardsState extends State<CategScrollCards> {
     return BlocBuilder<GetCategoriesCubit, GetCategoriesState>(
       builder: (context, state) {
         if (state is GetCategoriesLoading) {
-          return CircularProgressIndicator();
+          return const Center(
+              child: CircularProgressIndicator(color: AppColor.blueColor));
         } else if (state is GetCategoriesSuccess) {
           return GridView.builder(
               padding: EdgeInsets.only(top: context.setHeight(16.3)),

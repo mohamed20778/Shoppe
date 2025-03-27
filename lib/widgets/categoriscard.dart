@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shimmer/shimmer.dart';
+import 'package:shoppe/core/theme/app_color.dart';
 import 'package:shoppe/core/utils/responsive_helper/sizer_helper_extension.dart';
 import 'package:shoppe/cubits/auth_cubit/auth_cubit.dart';
 import 'package:shoppe/cubits/get_categories/get_categories_cubit.dart';
@@ -32,50 +34,66 @@ class _CategoriescardState extends State<Categoriescard> {
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Expanded(
             flex: 3,
-            child: widget.categoryitem!.image != 'https://pravatar.cc/'
-                ? Container(
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: NetworkImage(widget.categoryitem!.image!),
-                            fit: BoxFit.cover)),
-                  )
-                : Text('No image'),
+            child: Image.network(
+              widget.categoryitem!.image!,
+              width: double.infinity,
+              fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) => Image.asset(
+                'assets/images/artist-2 1.png',
+                fit: BoxFit.cover,
+              ),
+              loadingBuilder: (context, child, loadingProgress) {
+                if (loadingProgress == null) return child;
+                return Shimmer.fromColors(
+                  baseColor: Colors.grey[300]!,
+                  highlightColor: AppColor.secondColor,
+                  child: Container(
+                    color: Colors.white,
+                    width: double.infinity,
+                    height: 200, // Match your image dimensions
+                  ),
+                );
+              },
+            ),
           ),
           SizedBox(
             height: context.setHeight(16),
           ),
-          Padding(
-            padding: EdgeInsets.only(
-                left: context.setWidth(6), right: context.setWidth(6)),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  widget.categoryitem!.name!,
-                  style: TextStyle(
-                      fontSize: context.setSp(16),
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'raleway'),
-                ),
-                Container(
-                  width: context.setButtonWidth(38),
-                  height: context.setButtonHeight(21),
-                  decoration: BoxDecoration(
-                    color: const Color(0XFFDFE9FF),
-                    borderRadius: BorderRadius.circular(5.r),
-                  ),
-                  child: Center(
-                    child: Text(
-                      '235',
-                      style: TextStyle(
-                        fontFamily: 'raleway',
+          Flexible(
+            child: Padding(
+              padding: EdgeInsets.only(
+                  left: context.setWidth(6), right: context.setWidth(6)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    widget.categoryitem!.name!,
+                    style: TextStyle(
+                        fontSize: context.setSp(16),
                         fontWeight: FontWeight.bold,
-                        fontSize: context.setSp(12),
+                        fontFamily: 'raleway',
+                        overflow: TextOverflow.ellipsis),
+                  ),
+                  Container(
+                    width: context.setButtonWidth(38),
+                    height: context.setButtonHeight(21),
+                    decoration: BoxDecoration(
+                      color: const Color(0XFFDFE9FF),
+                      borderRadius: BorderRadius.circular(5.r),
+                    ),
+                    child: Center(
+                      child: Text(
+                        '235',
+                        style: TextStyle(
+                          fontFamily: 'raleway',
+                          fontWeight: FontWeight.bold,
+                          fontSize: context.setSp(12),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           SizedBox(

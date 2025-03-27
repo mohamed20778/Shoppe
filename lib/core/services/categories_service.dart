@@ -12,7 +12,9 @@ class CategoriesService {
       final response = await dio.get(url);
       if (response.statusCode == 200) {
         List<dynamic> data = response.data;
-        print(data);
+        if (kDebugMode) {
+          print(data);
+        }
         for (int i = 0; i < data.length; i++) {
           categories.add(CategoryModel.fromJson(data[i]));
         }

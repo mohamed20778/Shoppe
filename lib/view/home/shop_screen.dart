@@ -105,7 +105,7 @@ class _ShopPage extends State<ShopPage> {
               ),
               BlocProvider(
                 create: (context) => GetCategoriesCubit(),
-                child: CategScrollCards(),
+                child: const CategScrollCards(),
               ),
               SizedBox(
                 height: context.setHeight(27),
