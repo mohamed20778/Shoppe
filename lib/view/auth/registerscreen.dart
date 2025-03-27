@@ -4,7 +4,7 @@ import 'package:shoppe/widgets/custom_button.dart';
 import 'package:shoppe/widgets/custom_form_field.dart';
 import 'package:shoppe/core/utils/constants.dart';
 import 'package:shoppe/core/utils/responsive_helper/sizer_helper_extension.dart';
-import 'package:shoppe/view/onboarding.dart';
+import 'package:shoppe/view/onboarding_screen.dart';
 
 class Registerscreen extends StatefulWidget {
   const Registerscreen({super.key});

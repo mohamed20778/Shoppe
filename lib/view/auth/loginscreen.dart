@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shoppe/widgets/custom_button.dart';
 import 'package:shoppe/widgets/custom_form_field.dart';
 import 'package:shoppe/core/utils/constants.dart';
@@ -16,6 +17,11 @@ class LoginScreen extends StatefulWidget {
 class LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
+
+  setemail() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('email', emailController.text);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,6 +81,7 @@ class LoginScreenState extends State<LoginScreen> {
                   children: [
                     MyButton(
                         buttonfunction: () {
+                          setemail();
                           Navigator.push(
                               context,
                               MaterialPageRoute(

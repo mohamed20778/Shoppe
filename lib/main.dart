@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shoppe/routing/router_generator.dart';
 import 'package:shoppe/view/auth/loginscreen.dart';
 import 'package:shoppe/view/auth/registerscreen.dart';
-import 'package:shoppe/view/startscreen.dart';
+import 'package:shoppe/view/home/shop_screen.dart';
+import 'package:shoppe/view/start_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,19 +25,14 @@ class MyApp extends StatelessWidget {
           data: MediaQuery.of(context).copyWith(
             textScaler: TextScaler.noScaling, // Disable system text scaling
           ),
-          child: MaterialApp(
+          child: MaterialApp.router(
+            routerConfig: RouterGenerator.mainRoutingOurApp,
             debugShowCheckedModeBanner: false,
             title: 'Shoppe',
             theme: ThemeData(
               colorScheme: const ColorScheme.light(),
               useMaterial3: true,
             ),
-            initialRoute: 'startScreen',
-            routes: {
-              'startScreen': (context) => const Startscreen(),
-              'registerScreen': (context) => const Registerscreen(),
-              'loginScreen': (context) => const LoginScreen(),
-            },
           ),
         );
       },

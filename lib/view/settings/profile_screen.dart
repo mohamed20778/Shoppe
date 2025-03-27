@@ -121,7 +121,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   SliverList.builder(
                       itemCount: 10,
                       itemBuilder: (context, index) {
-                        return const Categoriescard();
+                        return Categoriescard();
                       }),
                 ],
               ),

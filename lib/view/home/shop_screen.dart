@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shoppe/cubits/get_categories/get_categories_cubit.dart';
 import 'package:shoppe/widgets/categScrollCardsview.dart';
 import 'package:shoppe/widgets/customRow.dart';
 import 'package:shoppe/widgets/custom_form_field.dart';
@@ -101,7 +103,10 @@ class _ShopPage extends State<ShopPage> {
                   )
                 ],
               ),
-              const CategScrollCards(),
+              BlocProvider(
+                create: (context) => GetCategoriesCubit(),
+                child: CategScrollCards(),
+              ),
               SizedBox(
                 height: context.setHeight(27),
               ),
