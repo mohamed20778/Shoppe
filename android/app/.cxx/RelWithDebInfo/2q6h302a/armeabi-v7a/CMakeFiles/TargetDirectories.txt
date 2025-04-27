@@ -1,0 +1,2 @@
+D:/track/projects/E-commerce App/Shoppe/android/app/.cxx/RelWithDebInfo/2q6h302a/armeabi-v7a/CMakeFiles/edit_cache.dir
+D:/track/projects/E-commerce App/Shoppe/android/app/.cxx/RelWithDebInfo/2q6h302a/armeabi-v7a/CMakeFiles/rebuild_cache.dir

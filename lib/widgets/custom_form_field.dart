@@ -11,12 +11,12 @@ class CustomFormField extends StatelessWidget {
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final ValueChanged<String>? onChanged;
-  final double? width; // Responsive width factor
-  final double? height; // Responsive height factor
+  final double? width;
+  final double? height;
+  final EdgeInsetsGeometry? contentPadding;
 
   const CustomFormField({
     super.key,
-  
     required this.hintText,
     this.controller,
     this.validator,
@@ -26,59 +26,100 @@ class CustomFormField extends StatelessWidget {
     this.suffixIcon,
     this.onChanged,
     this.height,
-    this.width
+    this.width,
+    this.contentPadding,
   });
 
   @override
   Widget build(BuildContext context) {
-    // Get the screen size
-   
-
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(52.r),
-        color:  const Color(0xffF8F8F8),
-      ),
-      // ignore: prefer_if_null_operators
-      width: width == null ? context.setButtonWidth(335) : width,
-     
-      // ignore: prefer_if_null_operators
-      height: height == null ? context.setButtonHeight(52) : height, // Set responsive height
-      child: 
-          TextSelectionTheme(
-            data: const TextSelectionThemeData(
-              cursorColor: Colors.grey,
-              selectionColor: Colors.grey,
-            ),
-            child: TextFormField(
-              textAlign: TextAlign.start,
-              textAlignVertical: TextAlignVertical.center,
-              cursorColor: Colors.grey,
-              cursorHeight: context.setHeight(16),
-              controller: controller,
-              validator: validator,
-              keyboardType: keyboardType,
-              obscureText: obscureText,
-              decoration: InputDecoration(
-                
-                hintText: hintText,
-                hintStyle: const TextStyle(color: Colors.grey),
-                prefixIcon: prefixIcon,
-                suffixIcon: suffixIcon,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(52.r),
-                ),
-                enabledBorder: const OutlineInputBorder(
-                  borderSide: BorderSide.none
-
-                ),
-                focusedBorder: const OutlineInputBorder(
-                  borderSide: BorderSide.none
-                )
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(52.r),
+            color: const Color(0xffF8F8F8),
+          ),
+          width: width ?? 335.w,
+          height: height ?? 52.h,
+          child: TextFormField(
+            controller: controller,
+            validator: validator,
+            keyboardType: keyboardType,
+            obscureText: obscureText,
+            textAlign: TextAlign.start,
+            textAlignVertical: TextAlignVertical.center,
+            cursorColor: Colors.grey,
+            cursorHeight: context.setHeight(16),
+            decoration: InputDecoration(
+              contentPadding: contentPadding ??
+                  EdgeInsets.symmetric(
+                    horizontal: 16.w,
+                    vertical: 16.h,
+                  ),
+              hintText: hintText,
+              hintStyle: TextStyle(
+                color: Colors.grey,
+                fontSize: 14.sp,
               ),
-              onChanged: onChanged,
+              prefixIcon: prefixIcon != null
+                  ? Padding(
+                      padding: EdgeInsets.only(left: 16.w, right: 8.w),
+                      child: prefixIcon,
+                    )
+                  : null,
+              suffixIcon: suffixIcon != null
+                  ? Padding(
+                      padding: EdgeInsets.only(right: 16.w),
+                      child: suffixIcon,
+                    )
+                  : null,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(52.r),
+                borderSide: BorderSide.none,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(52.r),
+                borderSide: BorderSide.none,
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(52.r),
+                borderSide: BorderSide.none,
+              ),
+              focusedErrorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(52.r),
+                borderSide: const BorderSide(color: Colors.red, width: 1),
+              ),
+              errorStyle: const TextStyle(height: 0, fontSize: 0),
+              isDense: true,
             ),
-          ));
-     
+            onChanged: onChanged,
+          ),
+        ),
+        // Error message container with fixed height
+        SizedBox(
+          height: 20.h, // Fixed space for error message
+          child: Builder(
+            builder: (context) {
+              final error =
+                  validator != null ? validator!(controller?.text ?? '') : null;
+              return error != null
+                  ? Padding(
+                      padding: EdgeInsets.only(left: 16.w, top: 4.h),
+                      child: Text(
+                        error,
+                        style: TextStyle(
+                          color: Colors.red,
+                          fontSize: 10.sp,
+                        ),
+                      ),
+                    )
+                  : const SizedBox.shrink();
+            },
+          ),
+        ),
+      ],
+    );
   }
 }

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:shoppe/core/theme/app_color.dart';
 import 'package:shoppe/core/theme/app_style.dart';
-import 'package:shoppe/cubits/get_categories/get_categories_cubit.dart';
+import 'package:shoppe/cubits/get_categories_cubit/get_categories_cubit.dart';
 import 'package:shoppe/models/categorymodel.dart';
-import 'package:shoppe/widgets/categoriscard.dart';
+import 'package:shoppe/widgets/categoris_card.dart';
 import 'package:shoppe/core/utils/responsive_helper/sizer_helper_extension.dart';
 
 class CategScrollCards extends StatefulWidget {
@@ -29,8 +30,30 @@ class _CategScrollCardsState extends State<CategScrollCards> {
     return BlocBuilder<GetCategoriesCubit, GetCategoriesState>(
       builder: (context, state) {
         if (state is GetCategoriesLoading) {
-          return const Center(
-              child: CircularProgressIndicator(color: AppColor.blueColor));
+          return GridView.builder(
+              padding: EdgeInsets.only(top: context.setHeight(16.3)),
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: 6,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  childAspectRatio:
+                      context.isLandscape ? 1.3 : context.setWidth(0.8),
+                  mainAxisSpacing: context.setHeight(10),
+                  crossAxisSpacing: context.setWidth(10),
+                  crossAxisCount: context.isLandscape ? 3 : 2),
+              itemBuilder: (context, index) {
+                return Shimmer.fromColors(
+                  highlightColor: AppColor.blueColor,
+                  baseColor: Colors.grey[300]!,
+                  direction: ShimmerDirection.ttb,
+                  child: Container(
+                    color: Colors.white,
+                    width: context.setWidth(192),
+                    height:
+                        context.setHeight(165), // Match your image dimensions
+                  ),
+                );
+              });
         } else if (state is GetCategoriesSuccess) {
           return GridView.builder(
               padding: EdgeInsets.only(top: context.setHeight(16.3)),

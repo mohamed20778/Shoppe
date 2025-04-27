@@ -35,9 +35,7 @@ class LoginScreenState extends State<LoginScreen> {
             image: DecorationImage(
                 image: const AssetImage('assets/images/Bubbles (2).png'),
                 fit: BoxFit.cover,
-                scale: context.isLandscape
-                    ? context.setHeight(0.5)
-                    : context.setWidth(0.5)),
+                scale: context.isLandscape ? 0.5.sh : context.setWidth(0.5)),
           ),
           child: SingleChildScrollView(
             child: Column(
@@ -67,6 +65,16 @@ class LoginScreenState extends State<LoginScreen> {
                       height: context.setHeight(17),
                     ),
                     CustomFormField(
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Please Enter Your Email';
+                        }
+                        if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
+                            .hasMatch(value)) {
+                          return 'Please enter a valid email';
+                        }
+                        return null;
+                      },
                       controller: emailController,
                       hintText: 'Email',
                       obscureText: false,
@@ -81,12 +89,19 @@ class LoginScreenState extends State<LoginScreen> {
                   children: [
                     MyButton(
                         buttonfunction: () {
-                          setemail();
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const PasswordScreen()));
+                          if (_formKey.currentState!.validate()) {
+                            setemail();
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const PasswordScreen()));
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Login Successful'),
+                              ),
+                            );
+                          }
                         },
                         text: 'Next',
                         color: blucolor,

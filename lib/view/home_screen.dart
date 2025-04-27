@@ -1,6 +1,10 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:shoppe/constants.dart';
+import 'package:shoppe/core/theme/app_color.dart';
+import 'package:shoppe/core/theme/app_style.dart';
+
 import 'package:shoppe/view/home/cart_screen.dart';
 import 'package:shoppe/view/home/favourite_screen.dart';
 import 'package:shoppe/view/home/shop_screen.dart';
@@ -26,7 +30,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
           selectedItemColor: Colors.grey,
-          unselectedItemColor: blucolor,
+          unselectedItemColor: AppColor.blueColor,
           onTap: (index) {
             setState(() {
               currentIndex = index;

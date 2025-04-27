@@ -1,6 +1,8 @@
+// ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
-// ignore: depend_on_referenced_packages
+import 'package:flutter/foundation.dart';
+// ignore: depend_on_referenced_packages, unnecessary_import
 import 'package:meta/meta.dart';
 
 part 'auth_state.dart';
@@ -15,14 +17,18 @@ class AuthCubitCubit extends Cubit<AuthCubitState> {
     try {
       final response =
           await dio.post(url, data: {'email': email, 'password': password});
-      print(response.data);
+      if (kDebugMode) {
+        print(response.data);
+      }
       if (response.statusCode == 201) {
         emit(AuthSuccessState());
       } else if (response.statusCode == 401) {
         emit(AuthFailureState());
       }
     } catch (e) {
-      print('Error: $e');
+      if (kDebugMode) {
+        print('Error: $e');
+      }
       emit(AuthFailureState());
     }
   }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shoppe/widgets/circle_button.dart';
-import 'package:shoppe/widgets/ColorOrSizeWidget.dart';
+import 'package:shoppe/widgets/color_sizeWidget.dart';
 import 'package:shoppe/core/utils/responsive_helper/sizer_helper_extension.dart';
 
 class CartItem extends StatefulWidget {

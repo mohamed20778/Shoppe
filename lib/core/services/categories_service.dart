@@ -1,15 +1,17 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:shoppe/core/utils/constants.dart';
 import 'package:shoppe/models/categorymodel.dart';
 
 class CategoriesService {
-  final Dio dio = Dio();
+  final Dio dio;
+  CategoriesService({Dio? dio})
+      : dio = dio ?? Dio(BaseOptions(baseUrl: ApiConstants.baseUrl));
   List<CategoryModel> categories = [];
-  final url = "https://api.escuelajs.co/api/v1/categories";
 
   Future<List<CategoryModel>> getCategories() async {
     try {
-      final response = await dio.get(url);
+      final response = await dio.get('/categories');
       if (response.statusCode == 200) {
         List<dynamic> data = response.data;
         if (kDebugMode) {

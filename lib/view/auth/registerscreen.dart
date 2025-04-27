@@ -78,15 +78,9 @@ class _RegisterscreenState extends State<Registerscreen> {
                 hintText: 'Name',
                 obscureText: false,
               ),
-              SizedBox(
-                height: context.setHeight(8),
-              ),
               const CustomFormField(
                 hintText: 'Email',
                 obscureText: false,
-              ),
-              SizedBox(
-                height: context.setHeight(8),
               ),
               CustomFormField(
                 hintText: 'Password',
@@ -104,7 +98,7 @@ class _RegisterscreenState extends State<Registerscreen> {
                 obscureText: isvisible,
               ),
               SizedBox(
-                height: context.setHeight(52.1),
+                height: context.setHeight(15),
               ),
             ]),
             Column(children: [
