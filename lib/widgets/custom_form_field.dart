@@ -37,6 +37,7 @@ class CustomFormField extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
+          margin: EdgeInsets.symmetric(vertical: 5.h),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(52.r),
             color: const Color(0xffF8F8F8),
@@ -91,32 +92,10 @@ class CustomFormField extends StatelessWidget {
                 borderRadius: BorderRadius.circular(52.r),
                 borderSide: const BorderSide(color: Colors.red, width: 1),
               ),
-              errorStyle: const TextStyle(height: 0, fontSize: 0),
+              errorStyle: TextStyle(height: 0.7, fontSize: 12.sp),
               isDense: true,
             ),
             onChanged: onChanged,
-          ),
-        ),
-        // Error message container with fixed height
-        SizedBox(
-          height: 20.h, // Fixed space for error message
-          child: Builder(
-            builder: (context) {
-              final error =
-                  validator != null ? validator!(controller?.text ?? '') : null;
-              return error != null
-                  ? Padding(
-                      padding: EdgeInsets.only(left: 16.w, top: 4.h),
-                      child: Text(
-                        error,
-                        style: TextStyle(
-                          color: Colors.red,
-                          fontSize: 10.sp,
-                        ),
-                      ),
-                    )
-                  : const SizedBox.shrink();
-            },
           ),
         ),
       ],

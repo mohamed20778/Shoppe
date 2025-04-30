@@ -28,6 +28,7 @@ class _CustomListViewState extends State<CustomListView> {
           );
         } else if (state is GetProductSuccess) {
           return CustomScrollView(
+            shrinkWrap: true,
             scrollDirection: Axis.horizontal,
             slivers: [
               SliverList.builder(

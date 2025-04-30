@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:shoppe/core/utils/responsive_helper/sizer_helper_extension.dart';
 import 'package:shoppe/widgets/circle_button.dart';
 import 'package:shoppe/widgets/custom_button.dart';
 import 'package:shoppe/widgets/profile_avatar.dart';
@@ -15,22 +15,22 @@ class ProfileAppbar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Row(
-          spacing: context.setButtonWidth(16),
+          spacing: 16.w,
           children: [
             const ProfileAvatar(),
             MyButton(
               buttonfunction: () {},
               text: 'My Activity',
               color: blucolor,
-              width: context.setButtonWidth(115),
-              height: context.setButtonHeight(35),
+              width: 130.w,
+              height: 35.h,
               textcolor: Colors.white,
-              fontSize: context.setSp(16),
+              fontSize: 16.sp,
             ),
           ],
         ),
         Row(
-          spacing: context.setWidth(11),
+          spacing: 11.w,
           children: [
             CircleButton(
               icon: FontAwesomeIcons.ticket,

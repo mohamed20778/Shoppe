@@ -9,4 +9,5 @@ class AppRoutes {
   static const String loginScreen = "/login_screen";
   static const String passwordScreen = "/password_screen";
   static const String signUpScreen = "/signup_screen";
+  static const String paymentScreen = "/payment_screen";
 }

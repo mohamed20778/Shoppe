@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shoppe/core/services/product_service.dart';
-import 'package:shoppe/core/utils/responsive_helper/sizer_helper_extension.dart';
 import 'package:shoppe/cubits/get_product_cubit/get_product_cubit.dart';
 
 import 'package:shoppe/widgets/address_Item.dart';
@@ -27,16 +26,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.only(
-              top: context.setButtonHeight(71),
-              left: context.setWidth(20),
-              right: context.setWidth(18)),
+          padding: EdgeInsets.only(top: 71.h, left: 20.w, right: 18.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const ProfileAppbar(),
               SizedBox(
-                height: context.setButtonHeight(22),
+                height: 22.h,
               ),
               Text(
                 'Hello,Romina!',
@@ -44,15 +40,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   color: Colors.black,
                   fontFamily: 'Raleway',
                   fontWeight: FontWeight.bold,
-                  fontSize: context.setSp(21),
+                  fontSize: 21.sp,
                 ),
               ),
               SizedBox(
-                height: context.setButtonHeight(12),
+                height: 12.h,
               ),
               const AddressItem(),
               SizedBox(
-                height: context.setButtonHeight(18),
+                height: 18.h,
               ),
               Text(
                 'Recently Viewed',
@@ -60,15 +56,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   color: Colors.black,
                   fontFamily: 'Raleway',
                   fontWeight: FontWeight.bold,
-                  fontSize: context.setSp(21),
+                  fontSize: 21.sp,
                 ),
               ),
               SizedBox(
-                height: context.setButtonHeight(12),
+                height: 12.h,
               ),
               const HorizontalList(),
               SizedBox(
-                height: context.setButtonHeight(25),
+                height: 25.h,
               ),
               Text(
                 'My Order',
@@ -76,48 +72,48 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   color: Colors.black,
                   fontFamily: 'Raleway',
                   fontWeight: FontWeight.bold,
-                  fontSize: context.setSp(21),
+                  fontSize: 21.sp,
                 ),
               ),
               SizedBox(
-                height: context.setButtonHeight(12),
+                height: 12.h,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                spacing: context.setButtonWidth(7),
+                spacing: 7.w,
                 children: [
                   MyButton(
                       buttonfunction: () {},
-                      fontSize: context.setSp(16),
+                      fontSize: 16.sp,
                       text: 'To Pay',
                       color: const Color(0xffE5EBFC),
-                      width: context.setButtonWidth(85),
-                      height: context.setButtonHeight(35),
+                      width: 85.w,
+                      height: 35.h,
                       textcolor: blucolor),
                   MyButton(
                       buttonfunction: () {},
-                      fontSize: context.setSp(16),
+                      fontSize: 16.sp,
                       text: 'To Recieve',
                       color: const Color(0xffE5EBFC),
-                      width: context.setButtonWidth(118),
-                      height: context.setButtonHeight(35),
+                      width: 118.w,
+                      height: 35.h,
                       textcolor: blucolor),
                   MyButton(
                       buttonfunction: () {},
-                      fontSize: context.setSp(16),
+                      fontSize: 16.sp,
                       text: 'To Review',
                       color: const Color(0xffE5EBFC),
-                      width: context.setButtonWidth(118),
-                      height: context.setButtonHeight(35),
+                      width: 118.w,
+                      height: 35.h,
                       textcolor: blucolor),
                 ],
               ),
               SizedBox(
-                height: context.setButtonHeight(28),
+                height: 28.h,
               ),
-              CustomRow(rowText: 'New Item', fontSize: 21),
+              CustomRow(rowText: 'New Item', fontSize: 21.sp),
               SizedBox(
-                height: context.setHeight(10),
+                height: 10.h,
               ),
               SizedBox(
                 height: 262.h,

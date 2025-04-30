@@ -10,6 +10,7 @@ import 'package:shoppe/view/home/favourite_screen.dart';
 import 'package:shoppe/view/home/home_screen.dart';
 import 'package:shoppe/view/home/shop_screen.dart';
 import 'package:shoppe/view/onboarding_screen.dart';
+import 'package:shoppe/view/payment_screen.dart';
 import 'package:shoppe/view/settings/profile_screen.dart';
 import 'package:shoppe/view/start_screen.dart';
 
@@ -74,6 +75,11 @@ class RouterGenerator {
           name: AppRoutes.favouriteScreen,
           path: AppRoutes.favouriteScreen,
           builder: (context, state) => const FavouriteScreen(),
+        ),
+        GoRoute(
+          name: AppRoutes.paymentScreen,
+          path: AppRoutes.paymentScreen,
+          builder: (context, state) => const PayementScreen(),
         ),
       ]);
 }

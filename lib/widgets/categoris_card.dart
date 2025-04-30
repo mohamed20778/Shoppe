@@ -35,9 +35,9 @@ class _CategoriescardState extends State<Categoriescard> {
             child: Image.network(
               widget.categoryitem!.image!,
               width: double.infinity,
-              fit: BoxFit.cover,
+              fit: BoxFit.fill,
               errorBuilder: (context, error, stackTrace) => Image.asset(
-                'assets/images/artist-2 1.png',
+                'assets/images/no image availabe.png',
                 fit: BoxFit.cover,
               ),
               loadingBuilder: (context, child, loadingProgress) {

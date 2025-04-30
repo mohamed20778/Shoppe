@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:shoppe/routing/app_routes.dart';
 import 'package:shoppe/widgets/address_Item.dart';
 import 'package:shoppe/widgets/cart_Item.dart';
 import 'package:shoppe/widgets/custom_button.dart';
@@ -86,7 +88,9 @@ class _CartScreenState extends State<CartScreen> {
                 ),
                 const Spacer(),
                 MyButton(
-                    buttonfunction: () {},
+                    buttonfunction: () {
+                      context.push(AppRoutes.paymentScreen);
+                    },
                     fontSize: context.setSp(16),
                     text: 'Checkout',
                     color: blucolor,
