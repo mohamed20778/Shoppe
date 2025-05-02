@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shoppe/core/theme/app_color.dart';
+import 'package:shoppe/core/theme/app_style.dart';
 import 'package:shoppe/core/utils/constants.dart';
 import 'package:shoppe/core/utils/responsive_helper/sizer_helper_extension.dart';
-import 'package:shoppe/view/auth/loginscreen.dart';
+import 'package:shoppe/widgets/custom_address_form.dart';
+import 'package:shoppe/widgets/custom_button.dart';
 
 class AddressItem extends StatelessWidget {
   const AddressItem({super.key});
@@ -9,18 +13,15 @@ class AddressItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: context.setButtonWidth(350),
-      height: context.setButtonHeight(80),
+      width: 350.w,
+      height: 80.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(context.setRadius(10)),
         color: const Color(0xffF9F9F9),
       ),
       child: Padding(
-        padding: EdgeInsets.only(
-            left: context.setWidth(16),
-            right: context.setWidth(10),
-            top: context.setHeight(9),
-            bottom: context.setHeight(10)),
+        padding:
+            EdgeInsets.only(left: 16.w, right: 10.w, top: 9.h, bottom: 10.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -28,19 +29,19 @@ class AddressItem extends StatelessWidget {
               "shipping address",
               style: TextStyle(
                 fontFamily: 'Raleway',
-                fontSize: context.setSp(14),
+                fontSize: 14.sp,
                 fontWeight: FontWeight.bold,
               ),
             ),
             SizedBox(
-              height: context.setHeight(5),
+              height: 5.h,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsets.only(right: context.setWidth(30)),
+                    padding: EdgeInsets.only(right: 30.w),
                     child: Text(
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
@@ -48,23 +49,82 @@ class AddressItem extends StatelessWidget {
                       style: TextStyle(
                         fontFamily: 'NunitoSans',
                         fontWeight: FontWeight.bold,
-                        fontSize: context.setSp(10),
+                        fontSize: 10.sp,
                       ),
                     ),
                   ),
                 ),
                 Container(
-                    width: context.setButtonWidth(30),
-                    height: context.setButtonHeight(30),
+                    width: 30.w,
+                    height: 30.h,
                     decoration: BoxDecoration(
                         color: blucolor,
-                        borderRadius: BorderRadius.circular(50)),
+                        borderRadius: BorderRadius.circular(50.r)),
                     child: IconButton(
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const LoginScreen()));
+                        showModalBottomSheet(
+                            isScrollControlled: true,
+                            context: context,
+                            builder: (BuildContext context) {
+                              return Padding(
+                                padding: EdgeInsets.only(
+                                  bottom:
+                                      MediaQuery.of(context).viewInsets.bottom,
+                                ),
+                                child: SingleChildScrollView(
+                                  child: Container(
+                                    width: 375.w,
+                                    height: 425.h,
+                                    child: Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 20.w, vertical: 20.h),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Shipping Address',
+                                            style: AppStyle.headlinestyle2(
+                                                context),
+                                          ),
+                                          SizedBox(
+                                            height: 40.h,
+                                          ),
+                                          CustomAddressForm(
+                                              labelText: 'Country'),
+                                          SizedBox(
+                                            height: 14.h,
+                                          ),
+                                          CustomAddressForm(
+                                              labelText: 'Address'),
+                                          SizedBox(
+                                            height: 14.h,
+                                          ),
+                                          CustomAddressForm(
+                                              labelText: 'Town/City'),
+                                          SizedBox(
+                                            height: 14.h,
+                                          ),
+                                          CustomAddressForm(
+                                              labelText: 'portal code'),
+                                          SizedBox(
+                                            height: 16.h,
+                                          ),
+                                          MyButton(
+                                            buttonfunction: () {},
+                                            text: 'Save changes',
+                                            color: AppColor.primaryColor,
+                                            width: 335.w,
+                                            height: 40.h,
+                                            textcolor: Colors.white,
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              );
+                            });
                       },
                       icon: Icon(
                         Icons.edit,

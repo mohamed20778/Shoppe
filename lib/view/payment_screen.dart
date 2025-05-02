@@ -53,7 +53,7 @@ class _PayementScreenState extends State<PayementScreen> {
                     color: const Color(0xffF9F9F9),
                     borderRadius: BorderRadius.circular(10.r),
                     border: Border.all(
-                      color: AppColor.blueColor,
+                      color: AppColor.primaryColor,
                     ),
                   ),
                   child: MaterialButton(
@@ -61,7 +61,7 @@ class _PayementScreenState extends State<PayementScreen> {
                     child: Text(
                       "Add Voucher",
                       style: TextStyle(
-                          color: AppColor.blueColor,
+                          color: AppColor.primaryColor,
                           fontFamily: AppFonts.nunito,
                           fontSize: 13.sp),
                     ),
@@ -94,7 +94,7 @@ class _PayementScreenState extends State<PayementScreen> {
                     ),
                   ),
                 ),
-                Expanded(
+                const Expanded(
                   child: Text(
                     'Lorem ipsum dolor sit amet consectetur.',
                     overflow: TextOverflow.ellipsis,
@@ -129,7 +129,7 @@ class _PayementScreenState extends State<PayementScreen> {
                     ),
                   ),
                 ),
-                Expanded(
+                const Expanded(
                   child: Text(
                     'Lorem ipsum dolor sit amet consectetur.',
                     overflow: TextOverflow.ellipsis,
@@ -153,7 +153,7 @@ class _PayementScreenState extends State<PayementScreen> {
                   width: context.setButtonWidth(30),
                   height: context.setButtonHeight(30),
                   decoration: BoxDecoration(
-                      color: AppColor.blueColor,
+                      color: AppColor.primaryColor,
                       borderRadius: BorderRadius.circular(50)),
                   child: IconButton(
                     onPressed: () {
@@ -187,7 +187,7 @@ class _PayementScreenState extends State<PayementScreen> {
                   child: Text(
                     "Card",
                     style: TextStyle(
-                        color: AppColor.blueColor,
+                        color: AppColor.primaryColor,
                         fontFamily: AppFonts.raleway,
                         fontWeight: FontWeight.bold,
                         fontSize: 15.sp),
@@ -206,7 +206,7 @@ class _PayementScreenState extends State<PayementScreen> {
                   child: Text(
                     "Fawry",
                     style: TextStyle(
-                        color: AppColor.blueColor,
+                        color: AppColor.primaryColor,
                         fontFamily: AppFonts.raleway,
                         fontWeight: FontWeight.bold,
                         fontSize: 15.sp),
@@ -225,7 +225,7 @@ class _PayementScreenState extends State<PayementScreen> {
                   child: Text(
                     "delivry",
                     style: TextStyle(
-                        color: AppColor.blueColor,
+                        color: AppColor.primaryColor,
                         fontFamily: AppFonts.raleway,
                         fontWeight: FontWeight.bold,
                         fontSize: 15.sp),
@@ -286,13 +286,13 @@ class _PayementScreenState extends State<PayementScreen> {
                                                         BorderRadius.circular(
                                                             10.r)),
                                                 foregroundColor:
-                                                    AppColor.blueColor,
+                                                    AppColor.primaryColor,
                                                 backgroundColor:
-                                                    AppColor.blueColor,
+                                                    AppColor.primaryColor,
                                                 iconColor: Colors.white,
                                                 fixedSize: Size(45.w, 155.h)),
                                             onPressed: () {},
-                                            child: Icon(
+                                            child: const Icon(
                                               Icons.add,
                                             ))
                                       ],

@@ -43,7 +43,7 @@ class _CategScrollCardsState extends State<CategScrollCards> {
                   crossAxisCount: context.isLandscape ? 3 : 2),
               itemBuilder: (context, index) {
                 return Shimmer.fromColors(
-                  highlightColor: AppColor.blueColor,
+                  highlightColor: AppColor.primaryColor,
                   baseColor: Colors.grey[300]!,
                   direction: ShimmerDirection.ttb,
                   child: Container(

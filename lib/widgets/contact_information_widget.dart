@@ -64,7 +64,7 @@ class ContactInformationWidget extends StatelessWidget {
                     width: 30.w,
                     height: 30.h,
                     decoration: BoxDecoration(
-                        color: AppColor.blueColor,
+                        color: AppColor.primaryColor,
                         borderRadius: BorderRadius.circular(50)),
                     child: IconButton(
                       onPressed: () {

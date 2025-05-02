@@ -43,7 +43,7 @@ class Startscreen extends StatelessWidget {
           ),
           MyButton(
             text: "Let's get started",
-            color: AppColor.blueColor,
+            color: AppColor.primaryColor,
             width: context.setButtonWidth(335),
             height: context.setButtonHeight(61),
             textcolor: Colors.white,
