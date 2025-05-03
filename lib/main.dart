@@ -1,19 +1,43 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shoppe/core/services/push_notification_service.dart';
 import 'package:shoppe/cubits/simple_bloc_opserver.dart';
+import 'package:shoppe/firebase_options.dart';
 import 'package:shoppe/routing/router_generator.dart';
+
+Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+
+  if (kDebugMode) {
+    print("Handling a background message: ${message.messageId}");
+  }
+}
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  try {
+    if (kDebugMode) {
+      await Firebase.initializeApp();
+      print("Firebase initialized successfully");
+    }
+  } catch (e) {
+    if (kDebugMode) {
+      print("Firebase initialization failed: $e");
+    }
+  }
   await ScreenUtil.ensureScreenSize();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-
+  FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
+  await PushNotificationService().notifcationConfig();
   runApp(const MyApp());
   Bloc.observer = SimpleBlocOpserver();
 }
